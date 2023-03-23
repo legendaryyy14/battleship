@@ -6,4 +6,9 @@ let board = new Board(); // creates a new game board
 // Create the UI of the game using HTML elements based on this grid.
 console.log(board.grid);
 
-// Your code here
+let ocean = document.createElement('div')
+
+ocean.innerHTML = "<div class=grid-container></div>"
+
+let parent = document = document.querySelector('body');
+parent.append(ocean);

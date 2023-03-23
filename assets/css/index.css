@@ -1,1 +1,21 @@
-/* Your code here */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto; /* the default */
+    grid-template-areas:
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box"
+      "box box box box box box box box box";
+    background-color: white;
+}
+
+.box {
+    border-color: black;
+    grid-area: box;
+}
