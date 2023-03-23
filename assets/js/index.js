@@ -6,9 +6,27 @@ let board = new Board(); // creates a new game board
 // Create the UI of the game using HTML elements based on this grid.
 console.log(board.grid);
 
-let ocean = document.createElement('div')
+//OUR CODE
+function makeBoard(gameBoard) {
+    let boardDiv = document.createElement('div');
+    boardDiv.id = 'board';
 
-ocean.innerHTML = "<div class=grid-container></div>"
+    gameBoard.forEach(row => {
+        row.forEach(cell => {
+            let cellDiv = document.createElement('div');
+            cellDiv.classList.add('cell');
+            boardDiv.append(cellDiv);
+        })
+    })
 
-let parent = document = document.querySelector('body');
-parent.append(ocean);
+    document.body.append(boardDiv);
+}
+
+function hit() {
+    let board = document.getElementById('board');
+    board.addEventListener('click', (e) => {
+        i
+    })
+}
+
+makeBoard(board.grid);
