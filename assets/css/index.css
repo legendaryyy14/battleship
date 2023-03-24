@@ -1,21 +1,58 @@
+body {
+  align-items: center;
+  background-color: #333333;
+  /* background-image: url('https://img.freepik.com/free-vector/wavy-smooth-lines-pattern-background_1017-14204.jpg'); */
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  justify-content: flex-start;
 
-.box {
-    border-color: black;
-    grid-area: box;
 }
-
-
+h1 {
+  color: white;
+}
 #board {
-    width: 100vw;
-    height: 100vw;
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    gap: 10px;
-    align-content: stretch;
-    justify-content: stretch;
-    padding: 10px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 5px;
+  height: 80vh;
+  padding: 10px;
+  width: 80vh;
 }
 .cell {
-    background-color: blue;
+  align-items: center;
+  background-color: #cccc;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.cell:hover {
+  filter: brightness(90%);
+}
+div.hit {
+  background-color: rgba(105, 161, 105, 0.75);
+}
+div.miss {
+  background-color: rgba(226, 61, 61, 0.75)
+}
+#controls {
+  color: white;
+  margin-bottom: 10px;
+}
+span {
+  display: none;
+}
+#reset {
+  background-color: rgba(105, 161, 105, 0.75);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: white;
+  margin: 0 10px;
+  padding: 5px;
 }

@@ -1,32 +1,61 @@
 import Board from "./board.js";
 
-let board = new Board(); // creates a new game board
+window.onload = resetGame;
 
-// Examine the grid of the game board in the browser console.
-// Create the UI of the game using HTML elements based on this grid.
-console.log(board.grid);
-
-//OUR CODE
-function makeBoard(gameBoard) {
-    let boardDiv = document.createElement('div');
-    boardDiv.id = 'board';
-
-    gameBoard.forEach(row => {
-        row.forEach(cell => {
-            let cellDiv = document.createElement('div');
-            cellDiv.classList.add('cell');
-            boardDiv.append(cellDiv);
-        })
-    })
-
-    document.body.append(boardDiv);
+function resetGame() {
+  let board = new Board(); // creates a new game board
+  makeControls();
+  makeBoard(board);
 }
 
-function hit() {
-    let board = document.getElementById('board');
-    board.addEventListener('click', (e) => {
-        i
-    })
-}
+function makeBoard(board) {
+  let gameboard = board.grid;
+  let boardDiv = document.createElement('div');
+  boardDiv.id = 'board';
 
-makeBoard(board.grid);
+  gameboard.forEach((row, i) => {
+    row.forEach((cell, j) => {
+      let cellDiv = document.createElement('div');
+      cellDiv.classList.add('cell');
+      cellDiv.addEventListener('click', cellClick)
+
+      boardDiv.append(cellDiv);
+      function cellClick() {
+        let hit = board.makeHit(i, j);
+        if (hit) {
+          cellDiv.classList.add('hit');
+          cellDiv.innerText = cell;
+          let win = board.isGameOver();
+          if (win) {
+            let cells = document.querySelectorAll('#board > .cell');
+            cells.forEach(bCell => {
+              bCell.style.pointerEvents = 'none';
+            });
+
+            let winDiv = document.createElement('div');
+            winDiv.innerText = 'YOU WIN!'
+            document.body.append(winDiv);
+          }
+        } else {
+          cellDiv.classList.add('miss');
+        }
+      }
+    })
+  })
+
+  document.body.append(boardDiv);
+}
+function makeControls() {
+  let reset = document.createElement('button');
+  reset.innerText = 'Reset Game';
+  reset.addEventListener('click', e => {
+    let resetButton = document.querySelector('button');
+    let boardDiv = document.querySelector('#board');
+    resetButton.remove();
+    boardDiv.remove();
+
+    resetGame()
+  });
+
+  document.body.append(reset);
+}
